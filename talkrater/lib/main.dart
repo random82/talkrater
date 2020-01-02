@@ -81,9 +81,9 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              'You will see a list of talks here soon',
-            ),            
+            Text('Talk 1'),
+            Text('Talk 2'),
+            Text('Talk 3'),
           ],
         ),
       ),
