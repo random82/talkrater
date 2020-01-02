@@ -87,24 +87,34 @@ class _MyHomePageState extends State<MyHomePage> {
                     Padding(
                       padding: EdgeInsets.all(20),
                       child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                            Column(
-                              children: <Widget>[
-                                Text(
-                                  'Flutter: The good, the bad, and the ugly',
-                                ),
-                                Row(children: <Widget>[
-                                  Card(
-                                    child: Text('mobile'),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Text(
+                                      'Flutter: The good, the bad, and the ugly',
+                                    ),
+                                  Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Row(children: <Widget>[
+                                      Card(
+                                        child: Text('mobile'),
+                                      ),
+                                      Card(
+                                        child: Text('tech'),
+                                      )
+                                    ],
                                   ),
-                                  Card(
-                                    child: Text('tech'),
-                                  )
-                                ],
-                              )
-                            ],
+                                )
+                              ],
+                            )
                           ),
-                          Icon(Icons.image)
+                          Align(
+                            alignment: Alignment.centerRight,
+                            child: Icon(Icons.image)
+                          )
                         ]
                       )
                     ),
