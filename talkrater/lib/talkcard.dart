@@ -16,7 +16,6 @@ class TalkCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return new Card(
               child:Column(
                 children: <Widget>[
@@ -30,7 +29,7 @@ class TalkCard extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
                                 Text(
-                                    'Flutter: The good, the bad, and the ugly',
+                                    this.title,
                                     style: TextStyle(
                                       color: Colors.grey[900],
                                       fontSize: 20
@@ -85,10 +84,7 @@ class TalkCard extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 20),
                     child: Text(
-                        'This is an introduction to mobile development using Flutter and Dart. \n\n'
-                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ullamcorper pharetra massa. '
-                        'Etiam ante sem, posuere ac ante vitae, scelerisque sagittis arcu. Donec tempor ligula quis malesuada accumsan. '
-                        'Curabitur pulvinar justo ac lorem semper, id suscipit diam volutpat. Duis egestas ultrices ante viverra facilisis. ',
+                        this.talkAbstract,
                         maxLines: 5,
                         softWrap: true,
                         overflow: TextOverflow.ellipsis,
@@ -109,7 +105,8 @@ class TalkCard extends StatelessWidget {
                                   children: <Widget>[
                                     Padding(
                                       padding: EdgeInsets.only(bottom: 5),
-                                      child:Text('Dom',
+                                      child:Text(
+                                        this.presenter,
                                         style: TextStyle (
                                           fontSize: 20 
                                         ),
@@ -117,7 +114,8 @@ class TalkCard extends StatelessWidget {
                                     ),
                                     Padding(
                                       padding: EdgeInsets.only(bottom: 5),
-                                      child:Text('Friday, 12:30pm',
+                                      child:Text(
+                                        'Friday, 12:30pm',
                                         style: TextStyle (
                                           fontSize: 20 
                                         ),
@@ -142,7 +140,8 @@ class TalkCard extends StatelessWidget {
                                         Icons.map
                                       ),
                                     ),
-                                    Text('Room1',
+                                    Text(
+                                      this.location,
                                       style: TextStyle(
                                         fontStyle: FontStyle.italic
                                       ),

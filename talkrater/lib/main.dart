@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:talkrater/talkcard.dart';
 
 void main() => runApp(MyApp());
 
@@ -81,7 +82,16 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            
+            TalkCard(
+              title: 'Flutter: The good, the bad, and the ugly',
+              talkAbstract: 
+                        'This is an introduction to mobile development using Flutter and Dart. \n\n'
+                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ullamcorper pharetra massa. '
+                        'Etiam ante sem, posuere ac ante vitae, scelerisque sagittis arcu. Donec tempor ligula quis malesuada accumsan. '
+                        'Curabitur pulvinar justo ac lorem semper, id suscipit diam volutpat. Duis egestas ultrices ante viverra facilisis. ',
+              presenter: 'Dom Raniszewski' ,
+              location: 'Room1',
+            ),
             Text('Talk 2'),
             Text('Talk 3'),
           ],
