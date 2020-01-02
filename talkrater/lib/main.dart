@@ -137,7 +137,11 @@ class _MyHomePageState extends State<MyHomePage> {
                         ),
                         Align(
                           alignment: Alignment.centerRight,
-                          child: Icon(Icons.image)
+                          child: Image.asset(
+                            'images/flutter-logo.png',
+                            width: 60,
+                            height: 60,
+                          )
                         )
                       ]
                     )
