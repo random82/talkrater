@@ -160,32 +160,78 @@ class _MyHomePageState extends State<MyHomePage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Expanded(
-                          child: Align(
-                            alignment: Alignment.centerLeft,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                Text('Dom'),
-                                Text('Room 1'),
-                              ],
-                            ),
-                          ),
+                          child: Column(
+                            children: <Widget>[
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Padding(
+                                      padding: EdgeInsets.only(bottom: 5),
+                                      child:Text('Dom',
+                                        style: TextStyle (
+                                          fontSize: 20 
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.only(bottom: 5),
+                                      child:Text('Friday, 12:30pm',
+                                        style: TextStyle (
+                                          fontSize: 20 
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ]
+                          )
                         ),
                         Align(
                           alignment: Alignment.centerRight,
                           child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: <Widget>[
-                              Text('Friday'),
-                              Text('12:30pm'),
-                            ],
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Row(
+                                  children: <Widget>[
+                                    Padding(
+                                      padding: EdgeInsets.only(right: 10),
+                                      child: Icon(
+                                        Icons.map
+                                      ),
+                                    ),
+                                    Text('Room1',
+                                      style: TextStyle(
+                                        fontStyle: FontStyle.italic
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  children: <Widget>[
+                                    Padding(
+                                      padding: EdgeInsets.only(right: 10),
+                                      child: Icon(
+                                        Icons.watch_later
+                                      ),
+                                    ),
+                                    Text('Starting in 1:47hr',
+                                      style: TextStyle(
+                                        fontStyle: FontStyle.italic
+                                      ),
+                                    ),
+                                  ],
+                                )
+                              ]
                           )
                         )
                       ],
-                    ),
+                    )
                   ),
                   Padding(
-                    padding: EdgeInsets.only(left: 20, right: 20, bottom: 10),
+                    padding: EdgeInsets.fromLTRB(20,0,20,20),
                     child: Row(
                       children: <Widget>[
                         Text("Rate:"),
@@ -196,7 +242,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         Icon(Icons.star_border),
                       ],
                     )
-                  )
+                  ),
                 ]
               )
             ),
