@@ -84,50 +84,64 @@ class _MyHomePageState extends State<MyHomePage> {
             Card(
               child:Column(
                 children: <Widget>[
-                    Row(
-                      children: <Widget>[
+                    Padding(
+                      padding: EdgeInsets.all(20),
+                      child: Row(
+                        children: <Widget>[
+                            Column(
+                              children: <Widget>[
+                                Text(
+                                  'Flutter: The good, the bad, and the ugly',
+                                ),
+                                Row(children: <Widget>[
+                                  Card(
+                                    child: Text('mobile'),
+                                  ),
+                                  Card(
+                                    child: Text('tech'),
+                                  )
+                                ],
+                              )
+                            ],
+                          ),
+                          Icon(Icons.image)
+                        ]
+                      )
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 20),
+                      child: Text(
+                          'This is an introduction to mobile development using Flutter and Dart. \n\n'
+                          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ullamcorper pharetra massa. '
+                          'Etiam ante sem, posuere ac ante vitae, scelerisque sagittis arcu. Donec tempor ligula quis malesuada accumsan. '
+                          'Curabitur pulvinar justo ac lorem semper, id suscipit diam volutpat. Duis egestas ultrices ante viverra facilisis. ',
+                          maxLines: 5,
+                          softWrap: true,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                      child: Row(
+                        children: <Widget>[
                           Column(
                             children: <Widget>[
-                              Text(
-                                'Flutter: The good, the bad, and the ugly',
-                              ),
-                              Row(children: <Widget>[
-                                Card(
-                                  child: Text('mobile'),
-                                ),
-                                Card(
-                                  child: Text('tech'),
-                                )
-                              ],
-                            )
-                          ],
-                        ),
-                        Icon(Icons.image)
-                      ]
-                    ),
-                    Text(
-                      'This is an introduction to mobile development using Flutter and Dart. \n\n'
-                      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ullamcorper pharetra massa. '
-                      'Etiam ante sem, posuere ac ante vitae, scelerisque sagittis arcu. Donec tempor ligula quis malesuada accumsan. '
-                      'Curabitur pulvinar justo ac lorem semper, id suscipit diam volutpat. Duis egestas ultrices ante viverra facilisis. ',
-                    ),
-                    Row(
-                      children: <Widget>[
-                        Column(
-                          children: <Widget>[
-                            Text('Dom'),
-                            Text('Room 1'),
-                          ],
-                        ),
-                        Column(
-                            children: <Widget>[
-                              Text('Friday'),
-                              Text('12:30pm'),
+                              Text('Dom'),
+                              Text('Room 1'),
                             ],
-                        )
-                      ],
+                          ),
+                          Column(
+                              children: <Widget>[
+                                Text('Friday'),
+                                Text('12:30pm'),
+                              ],
+                          )
+                        ],
+                      ),
                   ),
-                    Row(
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                    child: Row(
                       children: <Widget>[
                         Text("Rate:"),
                         Icon(Icons.star_border),
@@ -137,6 +151,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         Icon(Icons.star_border),
                       ],
                     )  
+                  )
                 ]
               )
             ),
