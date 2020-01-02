@@ -95,15 +95,39 @@ class _MyHomePageState extends State<MyHomePage> {
                               children: <Widget>[
                                 Text(
                                     'Flutter: The good, the bad, and the ugly',
-                                  ),
+                                    style: TextStyle(
+                                      color: Colors.grey[900],
+                                      fontSize: 20
+                                    ),
+                                    softWrap: true,
+                                    overflow: TextOverflow.ellipsis,
+                                ),
                                 Align(
                                   alignment: Alignment.centerLeft,
                                   child: Row(children: <Widget>[
                                     Card(
-                                      child: Text('mobile'),
+                                      color: Colors.purpleAccent[400],
+                                      child: Padding(
+                                          padding: EdgeInsets.all(3),
+                                          child: Text(
+                                          'mobile',
+                                          style: TextStyle(
+                                            color: Colors.white
+                                          ),
+                                        ),
+                                      )
                                     ),
                                     Card(
-                                      child: Text('tech'),
+                                      color: Colors.purpleAccent[400],
+                                      child: Padding(
+                                          padding: EdgeInsets.all(3),
+                                          child: Text(
+                                          'tech',
+                                          style: TextStyle(
+                                            color: Colors.white
+                                          ),
+                                        ),
+                                      )
                                     )
                                   ],
                                 ),
