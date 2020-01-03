@@ -1,6 +1,76 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+class TalkCardTitleSection extends StatelessWidget {
+
+  final String title;
+
+  TalkCardTitleSection({this.title});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(
+                    this.title,
+                    style: TextStyle(
+                      color: Colors.grey[900],
+                      fontSize: 20
+                    ),
+                    softWrap: true,
+                    overflow: TextOverflow.ellipsis,
+                ),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Row(children: <Widget>[
+                    Card(
+                      color: Colors.purpleAccent[400],
+                      child: Padding(
+                          padding: EdgeInsets.all(3),
+                          child: Text(
+                          'mobile',
+                          style: TextStyle(
+                            color: Colors.white
+                          ),
+                        ),
+                      )
+                    ),
+                    Card(
+                      color: Colors.purpleAccent[400],
+                      child: Padding(
+                          padding: EdgeInsets.all(3),
+                          child: Text(
+                          'tech',
+                          style: TextStyle(
+                            color: Colors.white
+                          ),
+                        ),
+                      )
+                    )
+                  ],
+                ),
+              )
+            ],
+          )
+        ),
+        Align(
+          alignment: Alignment.centerRight,
+          child: Image.asset(
+            'images/flutter-logo.png',
+            width: 60,
+            height: 60,
+          )
+        )
+      ]
+    );
+  }
+}
+
 class TalkCard extends StatelessWidget {
 
   final String title;
@@ -29,7 +99,6 @@ class TalkCard extends StatelessWidget {
     return 'Starting in ${duration.inHours}:${duration.inMinutes}';
   }
 
-
   final String location;
 
   TalkCard({this.title, this.talkAbstract, this.presenter, this.talkTime, this.location});
@@ -41,65 +110,7 @@ class TalkCard extends StatelessWidget {
                 children: <Widget>[
                   Padding(
                     padding: EdgeInsets.all(20),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                Text(
-                                    this.title,
-                                    style: TextStyle(
-                                      color: Colors.grey[900],
-                                      fontSize: 20
-                                    ),
-                                    softWrap: true,
-                                    overflow: TextOverflow.ellipsis,
-                                ),
-                                Align(
-                                  alignment: Alignment.centerLeft,
-                                  child: Row(children: <Widget>[
-                                    Card(
-                                      color: Colors.purpleAccent[400],
-                                      child: Padding(
-                                          padding: EdgeInsets.all(3),
-                                          child: Text(
-                                          'mobile',
-                                          style: TextStyle(
-                                            color: Colors.white
-                                          ),
-                                        ),
-                                      )
-                                    ),
-                                    Card(
-                                      color: Colors.purpleAccent[400],
-                                      child: Padding(
-                                          padding: EdgeInsets.all(3),
-                                          child: Text(
-                                          'tech',
-                                          style: TextStyle(
-                                            color: Colors.white
-                                          ),
-                                        ),
-                                      )
-                                    )
-                                  ],
-                                ),
-                              )
-                            ],
-                          )
-                        ),
-                        Align(
-                          alignment: Alignment.centerRight,
-                          child: Image.asset(
-                            'images/flutter-logo.png',
-                            width: 60,
-                            height: 60,
-                          )
-                        )
-                      ]
-                    )
+                    child: TalkCardTitleSection(title: this.title)
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 20),
