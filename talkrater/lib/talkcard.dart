@@ -5,17 +5,13 @@ class TalkCardDetailsSection extends StatelessWidget {
 
   final String presenter;
 
-  final DateTime talkTime;
-
   final String location;
 
-  Duration get _startingIn => talkTime.difference(DateTime.now());
+  final String formattedTalkTime; 
 
-  String get formattedTalkTime => DateFormat.EEEE().add_jm().format(talkTime);
+  final String formattedStartingIn;
 
-  String get formattedStartingIn => _formatDuration(_startingIn);
-
-  String _formatDuration(Duration duration) {
+  static String _formatDuration(Duration duration) {
     if(duration < Duration.zero) {
       return 'Started already';
     }
@@ -27,7 +23,10 @@ class TalkCardDetailsSection extends StatelessWidget {
     return 'Starting in ${duration.inHours}:${duration.inMinutes}';
   }
 
-  const TalkCardDetailsSection({Key key, this.presenter, this.talkTime, this.location}):super(key:key);
+  TalkCardDetailsSection({Key key, this.presenter, talkTime, this.location}):
+    formattedTalkTime = DateFormat.EEEE().add_jm().format(talkTime),
+    formattedStartingIn = _formatDuration(talkTime.difference(DateTime.now())),
+    super(key:key);
 
   @override
   Widget build(BuildContext context) {
