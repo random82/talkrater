@@ -23,10 +23,13 @@ class TalkCardDetailsSection extends StatelessWidget {
     return 'Starting in ${duration.inHours}:${duration.inMinutes}';
   }
 
-  TalkCardDetailsSection({Key key, this.presenter, talkTime, this.location}):
-    formattedTalkTime = DateFormat.EEEE().add_jm().format(talkTime),
-    formattedStartingIn = _formatDuration(talkTime.difference(DateTime.now())),
-    super(key:key);
+  TalkCardDetailsSection({Key key, 
+    @required this.presenter, 
+    @required talkTime, 
+    @required this.location}):
+      formattedTalkTime = DateFormat.EEEE().add_jm().format(talkTime),
+      formattedStartingIn = _formatDuration(talkTime.difference(DateTime.now())),
+      super(key:key);
 
   @override
   Widget build(BuildContext context) {
@@ -114,7 +117,9 @@ class TalkCardTitleSection extends StatelessWidget {
 
   final String title;
 
-  const TalkCardTitleSection({Key key, this.title}):super(key:key);
+  final List<String> tags;
+
+  const TalkCardTitleSection({Key key, @required this.title, @required this.tags}):super(key:key);
 
   @override
   Widget build(BuildContext context) {
@@ -136,14 +141,12 @@ class TalkCardTitleSection extends StatelessWidget {
                 ),
                 Align(
                   alignment: Alignment.centerLeft,
-                  child: Row(children: <Widget>[
-                    Chip(
-                      label :  Text('mobile'),
-                    ),
-                    Chip(
-                      label: Text('tech'),
-                    )
-                  ],
+                  child: Row(
+                    children: tags.take(3).map<Widget>((it) {
+                      return Chip(
+                        label :  Text(it),
+                      );
+                    }).toList()
                 ),
               )
             ],
@@ -174,7 +177,16 @@ class TalkCard extends StatelessWidget {
 
   final String location;
 
-  const TalkCard({Key key, this.title, this.talkAbstract, this.presenter, this.talkTime, this.location}): super(key:key);
+  final List<String> tags;
+
+  const TalkCard({Key key, 
+    @required this.title, 
+    @required this.talkAbstract, 
+    @required this.presenter, 
+    @required this.talkTime, 
+    @required this.location,
+    @required this.tags
+  }): super(key:key);
 
   @override
   Widget build(BuildContext context) {
@@ -183,7 +195,7 @@ class TalkCard extends StatelessWidget {
         children: <Widget>[
           Padding(
             padding: EdgeInsets.all(20),
-            child: TalkCardTitleSection(title: this.title)
+            child: TalkCardTitleSection(title: this.title, tags: this.tags)
           ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 20),
