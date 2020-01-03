@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:talkrater/model.dart';
 import 'package:talkrater/talkcard.dart';
 
 void main() => runApp(MyApp());
@@ -22,8 +23,6 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.purple,
         chipTheme: ChipThemeData.fromDefaults(
           primaryColor: Colors.purpleAccent[700],
-          //disabledColor: Colors.purpleAccent[100],
-          //labelPadding: EdgeInsets.all(3), 
           labelStyle: TextStyle(
             fontSize: 12,
           ), 
@@ -57,12 +56,21 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
+    var talks = <Talk>[
+      Talk(
+        title: 'Flutter: The good, the bad, and the ugly',
+        talkAbstract: 
+                  'This is an introduction to mobile development using Flutter and Dart. \n\n'
+                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ullamcorper pharetra massa. '
+                  'Etiam ante sem, posuere ac ante vitae, scelerisque sagittis arcu. Donec tempor ligula quis malesuada accumsan. '
+                  'Curabitur pulvinar justo ac lorem semper, id suscipit diam volutpat. Duis egestas ultrices ante viverra facilisis. ',
+        presenter: 'Dom Raniszewski' ,
+        location: 'Room1',
+        talkTime: new DateTime(2020, 02, 21, 12,30), 
+        tags: ['mobile','tech', 'beginner'],
+      )
+    ];
+
     return Scaffold(
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
@@ -90,22 +98,16 @@ class _MyHomePageState extends State<MyHomePage> {
           // axis because Columns are vertical (the cross axis would be
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            TalkCard(
-              title: 'Flutter: The good, the bad, and the ugly',
-              talkAbstract: 
-                        'This is an introduction to mobile development using Flutter and Dart. \n\n'
-                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ullamcorper pharetra massa. '
-                        'Etiam ante sem, posuere ac ante vitae, scelerisque sagittis arcu. Donec tempor ligula quis malesuada accumsan. '
-                        'Curabitur pulvinar justo ac lorem semper, id suscipit diam volutpat. Duis egestas ultrices ante viverra facilisis. ',
-              presenter: 'Dom Raniszewski' ,
-              location: 'Room1',
-              talkTime: new DateTime(2020, 02, 21, 12,30), 
-              tags: ['mobile','tech', 'beginner'],
-            ),
-            Text('Talk 2'),
-            Text('Talk 3'),
-          ],
+          children: talks.map((talk){
+            return TalkCard(
+              location: talk.location,
+              presenter: talk.presenter,
+              tags: talk.tags,
+              talkAbstract: talk.talkAbstract,
+              talkTime: talk.talkTime,
+              title: talk.title,
+            );
+          }).toList()
         ),
       ),
     );
