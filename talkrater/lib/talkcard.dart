@@ -27,7 +27,7 @@ class TalkCardDetailsSection extends StatelessWidget {
     return 'Starting in ${duration.inHours}:${duration.inMinutes}';
   }
 
-  TalkCardDetailsSection({this.presenter, this.talkTime, this.location});
+  const TalkCardDetailsSection({Key key, this.presenter, this.talkTime, this.location}):super(key:key);
 
   @override
   Widget build(BuildContext context) {
@@ -115,7 +115,7 @@ class TalkCardTitleSection extends StatelessWidget {
 
   final String title;
 
-  TalkCardTitleSection({this.title});
+  const TalkCardTitleSection({Key key, this.title}):super(key:key);
 
   @override
   Widget build(BuildContext context) {
@@ -193,7 +193,7 @@ class TalkCard extends StatelessWidget {
 
   final String location;
 
-  TalkCard({this.title, this.talkAbstract, this.presenter, this.talkTime, this.location});
+  const TalkCard({Key key, this.title, this.talkAbstract, this.presenter, this.talkTime, this.location}): super(key:key);
 
   @override
   Widget build(BuildContext context) {
@@ -232,6 +232,8 @@ class TalkCard extends StatelessWidget {
 }
 
 class TalkCardRateSection extends StatelessWidget {
+
+  const TalkCardRateSection({Key key}):super(key:key);
 
   @override
   Widget build(BuildContext context) {
