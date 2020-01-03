@@ -137,29 +137,11 @@ class TalkCardTitleSection extends StatelessWidget {
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Row(children: <Widget>[
-                    Card(
-                      color: Colors.purpleAccent[400],
-                      child: Padding(
-                          padding: EdgeInsets.all(3),
-                          child: Text(
-                          'mobile',
-                          style: TextStyle(
-                            color: Colors.white
-                          ),
-                        ),
-                      )
+                    Chip(
+                      label :  Text('mobile'),
                     ),
-                    Card(
-                      color: Colors.purpleAccent[400],
-                      child: Padding(
-                          padding: EdgeInsets.all(3),
-                          child: Text(
-                          'tech',
-                          style: TextStyle(
-                            color: Colors.white
-                          ),
-                        ),
-                      )
+                    Chip(
+                      label: Text('tech'),
                     )
                   ],
                 ),

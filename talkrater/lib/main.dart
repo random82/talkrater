@@ -20,6 +20,15 @@ class MyApp extends StatelessWidget {
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
         primarySwatch: Colors.purple,
+        chipTheme: ChipThemeData.fromDefaults(
+          primaryColor: Colors.purpleAccent[700],
+          //disabledColor: Colors.purpleAccent[100],
+          //labelPadding: EdgeInsets.all(3), 
+          labelStyle: TextStyle(
+            fontSize: 12,
+          ), 
+          secondaryColor: Colors.blueAccent[400],
+        )
       ),
       home: MyHomePage(title: 'Talk rater'),
     );
