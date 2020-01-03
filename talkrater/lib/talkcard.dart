@@ -223,19 +223,27 @@ class TalkCard extends StatelessWidget {
           ),
           Padding(
             padding: EdgeInsets.fromLTRB(20,0,20,20),
-            child: Row(
-              children: <Widget>[
-                Text("Rate:"),
-                Icon(Icons.star_border),
-                Icon(Icons.star_border),
-                Icon(Icons.star_border),
-                Icon(Icons.star_border),
-                Icon(Icons.star_border),
-              ],
-            )
+            child: TalkCardRateSection()
           )
         ]
       )
+    );
+  }
+}
+
+class TalkCardRateSection extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: <Widget>[
+        Text("Rate:"),
+        Icon(Icons.star_border),
+        Icon(Icons.star_border),
+        Icon(Icons.star_border),
+        Icon(Icons.star_border),
+        Icon(Icons.star_border),
+      ],
     );
   }
 }
