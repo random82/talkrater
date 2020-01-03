@@ -91,6 +91,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         'Curabitur pulvinar justo ac lorem semper, id suscipit diam volutpat. Duis egestas ultrices ante viverra facilisis. ',
               presenter: 'Dom Raniszewski' ,
               location: 'Room1',
+              talkTime: new DateTime(2020, 02, 21, 12,30),
             ),
             Text('Talk 2'),
             Text('Talk 3'),

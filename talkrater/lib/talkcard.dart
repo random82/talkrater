@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class TalkCard extends StatelessWidget {
 
@@ -9,6 +10,25 @@ class TalkCard extends StatelessWidget {
   final String presenter;
 
   final DateTime talkTime;
+
+  Duration get _startingIn => talkTime.difference(DateTime.now());
+
+  String get formattedTalkTime => DateFormat.EEEE().add_jm().format(talkTime);
+
+  String get formattedStartingIn => _formatDuration(_startingIn);
+
+  String _formatDuration(Duration duration) {
+    if(duration < Duration.zero) {
+      return 'Started already';
+    }
+
+    if(duration.inDays > 0){
+      return 'Starting in ${duration.inDays} days';
+    }
+
+    return 'Starting in ${duration.inHours}:${duration.inMinutes}';
+  }
+
 
   final String location;
 
@@ -115,7 +135,7 @@ class TalkCard extends StatelessWidget {
                                     Padding(
                                       padding: EdgeInsets.only(bottom: 5),
                                       child:Text(
-                                        'Friday, 12:30pm',
+                                        this.formattedTalkTime,
                                         style: TextStyle (
                                           fontSize: 20 
                                         ),
@@ -156,7 +176,8 @@ class TalkCard extends StatelessWidget {
                                         Icons.watch_later
                                       ),
                                     ),
-                                    Text('Starting in 1:47hr',
+                                    Text(
+                                      this.formattedStartingIn,
                                       style: TextStyle(
                                         fontStyle: FontStyle.italic
                                       ),
