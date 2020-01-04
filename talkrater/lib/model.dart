@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 import 'package:flutter/material.dart';
 
 class Talk {
@@ -15,4 +17,16 @@ class Talk {
     @required this.talkTime, 
     @required this.location,
     @required this.tags});
+}
+
+class TalkListModel extends ChangeNotifier {
+
+  final List<Talk> _items = [];
+
+  UnmodifiableListView<Talk> get items => UnmodifiableListView(_items);
+
+  add(Talk talk){
+    _items.add(talk);
+    notifyListeners();
+  }
 }
