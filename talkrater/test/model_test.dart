@@ -25,11 +25,9 @@ void main() {
   });
 
   test('Parse talks from JSON to model', () {
-    
-    File sampleFile = new File('test/sample.json');
-    var jsonString = sampleFile.readAsStringSync();
-    Map<String, dynamic> sample = convert.jsonDecode(jsonString);
-    
+    var jsonString = new File('test/sample.json').readAsStringSync();
+    var sample = convert.jsonDecode(jsonString);
+
     List talksJson = sample['talks'];
     List<Talk> talks = talksJson.map((talk) => Talk.fromJson(talk)).toList();
 
