@@ -1,5 +1,6 @@
 import 'dart:collection';
 
+import 'dart:convert' as convert;
 import 'package:flutter/material.dart';
 
 class Talk {
@@ -17,6 +18,14 @@ class Talk {
     @required this.talkTime, 
     @required this.location,
     @required this.tags});
+
+  Talk.fromJson(Map<String,dynamic> map):
+    title = map['title'],
+    location = map['location'],
+    presenter = map['presenter'],
+    talkAbstract = map['talkAbstract'],
+    talkTime = DateTime.parse(map['talkTime']),
+    tags = (map['tags'] as List).cast<String>();
 }
 
 class TalkListModel extends ChangeNotifier {

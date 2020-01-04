@@ -1,0 +1,34 @@
+{
+    "event":"B2B",
+    "startDate":"2020-02-21T08:30:00+10:00",
+    "endDate":"2020-02-21T16:30:00+10:00",
+    "talks":[
+        {
+            "title": "Amazing talk",
+            "talkAbstract": 
+                    "Amazing talk abstract",
+            "presenter": "Barbara L" ,
+            "location": "Room1",
+            "talkTime": "2020-02-21T12:30:00+10:00",
+            "tags": ["mobile","tech", "beginner"]
+        },
+        {
+            "title": "Another amazing talk",
+            "talkAbstract": 
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ullamcorper pharetra massa. ",
+            "presenter": "Jane D" ,
+            "location": "Room1",
+            "talkTime": "2020-02-21T14:30:00+10:00",
+            "tags": ["cloud","expert"]
+        },
+        {
+            "title": "Yet another amazing talk",
+            "talkAbstract": 
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ullamcorper pharetra massa. ",
+            "presenter": "Jeannette W" ,
+            "location": "Room1",
+            "talkTime": "2020-02-21T15:30:00+10:00",
+            "tags": ["AWS","k8s", "beginner"]
+        }
+    ]
+}
