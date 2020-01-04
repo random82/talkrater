@@ -1,7 +1,7 @@
 import 'dart:collection';
-
 import 'dart:convert' as convert;
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 class Talk {
   final String title;
@@ -30,46 +30,32 @@ class Talk {
 
 class TalkListModel extends ChangeNotifier {
 
-  final List<Talk> _items = [
-      Talk(
-        title: 'Amazing talk',
-        talkAbstract: 
-                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ullamcorper pharetra massa. '
-                  'Etiam ante sem, posuere ac ante vitae, scelerisque sagittis arcu. Donec tempor ligula quis malesuada accumsan. '
-                  'Curabitur pulvinar justo ac lorem semper, id suscipit diam volutpat. Duis egestas ultrices ante viverra facilisis. ',
-        presenter: 'Barbara L' ,
-        location: 'Room1',
-        talkTime: new DateTime(2020, 02, 21, 12, 30),
-        tags: ['mobile','tech', 'beginner'],
-      ),
-      Talk(
-        title: 'Another amazing talk',
-        talkAbstract: 
-                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ullamcorper pharetra massa. '
-                  'Etiam ante sem, posuere ac ante vitae, scelerisque sagittis arcu. Donec tempor ligula quis malesuada accumsan. '
-                  'Curabitur pulvinar justo ac lorem semper, id suscipit diam volutpat. Duis egestas ultrices ante viverra facilisis. ',
-        presenter: 'Jane D' ,
-        location: 'Room1',
-        talkTime: new DateTime(2020, 02, 21, 14, 30),
-        tags: ['cloud','expert'],
-      ),
-      Talk(
-        title: 'Yet another amazing talk',
-        talkAbstract: 
-                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ullamcorper pharetra massa. '
-                  'Etiam ante sem, posuere ac ante vitae, scelerisque sagittis arcu. Donec tempor ligula quis malesuada accumsan. '
-                  'Curabitur pulvinar justo ac lorem semper, id suscipit diam volutpat. Duis egestas ultrices ante viverra facilisis. ',
-        presenter: 'Jeannette W' ,
-        location: 'Room1',
-        talkTime: new DateTime(2020, 02, 21, 15, 30),
-        tags: ['AWS','k8s', 'beginner'],
-      )
-    ];
+  final List<Talk> _items = [];
 
   UnmodifiableListView<Talk> get items => UnmodifiableListView(_items);
 
   add(Talk talk){
     _items.add(talk);
     notifyListeners();
+  }
+
+  Future fetchTalkList() async{
+
+    var url = 'https://tr0934ng8530.blob.core.windows.net/b2b/2020Q1.json';
+
+    // Await the http get response, then decode the json-formatted response.
+    var response = await http.get(url);
+    if (response.statusCode == 200) {
+      var jsonResponse = convert.jsonDecode(response.body);
+      print('Found response for ${jsonResponse['event']}.');
+
+      List talksJson = jsonResponse['talks'];
+      talksJson
+        .map((talkJson) => Talk.fromJson(talkJson))
+        .forEach((talk) => add(talk)); 
+      } 
+    else {
+      print('Request failed with status: ${response.statusCode}.');
+    }
   }
 }

@@ -4,8 +4,8 @@ import 'package:talkrater/model.dart';
 import 'package:talkrater/talkcard.dart';
 
 void main() => runApp(
-  ChangeNotifierProvider(
-    create: (_) => TalkListModel(),
+  ChangeNotifierProvider.value(
+    value: new TalkListModel(),
     child: MyApp(),
 ));
 
@@ -51,13 +51,19 @@ class MyHomePage extends StatefulWidget {
   // used by the build method of the State. Fields in a Widget subclass are
   // always marked "final".
 
-  final String title;
+  final String title;  
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
+  @override
+  void initState() {
+    Provider.of<TalkListModel>(context, listen: false).fetchTalkList();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -85,7 +91,13 @@ class _MyHomePageState extends State<MyHomePage> {
               }
             );
           }
-        )
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+              Provider.of<TalkListModel>(context, listen: false).fetchTalkList();
+          },
+          child: Icon(Icons.refresh),
+        ),
     );
   }
 }
