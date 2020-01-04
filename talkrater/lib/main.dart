@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:talkrater/model.dart';
 import 'package:talkrater/talkcard.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(
+  ChangeNotifierProvider(
+    create: (_) => TalkListModel(),
+    child: MyApp(),
+));
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -56,41 +61,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    var talks = <Talk>[
-      Talk(
-        title: 'Amazing talk',
-        talkAbstract: 
-                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ullamcorper pharetra massa. '
-                  'Etiam ante sem, posuere ac ante vitae, scelerisque sagittis arcu. Donec tempor ligula quis malesuada accumsan. '
-                  'Curabitur pulvinar justo ac lorem semper, id suscipit diam volutpat. Duis egestas ultrices ante viverra facilisis. ',
-        presenter: 'Barbara L' ,
-        location: 'Room1',
-        talkTime: new DateTime(2020, 02, 21, 12, 30),
-        tags: ['mobile','tech', 'beginner'],
-      ),
-      Talk(
-        title: 'Another amazing talk',
-        talkAbstract: 
-                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ullamcorper pharetra massa. '
-                  'Etiam ante sem, posuere ac ante vitae, scelerisque sagittis arcu. Donec tempor ligula quis malesuada accumsan. '
-                  'Curabitur pulvinar justo ac lorem semper, id suscipit diam volutpat. Duis egestas ultrices ante viverra facilisis. ',
-        presenter: 'Jane D' ,
-        location: 'Room1',
-        talkTime: new DateTime(2020, 02, 21, 14, 30),
-        tags: ['cloud','expert'],
-      ),
-      Talk(
-        title: 'Yet another amazing talk',
-        talkAbstract: 
-                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ullamcorper pharetra massa. '
-                  'Etiam ante sem, posuere ac ante vitae, scelerisque sagittis arcu. Donec tempor ligula quis malesuada accumsan. '
-                  'Curabitur pulvinar justo ac lorem semper, id suscipit diam volutpat. Duis egestas ultrices ante viverra facilisis. ',
-        presenter: 'Jeannette W' ,
-        location: 'Room1',
-        talkTime: new DateTime(2020, 02, 21, 15, 30),
-        tags: ['AWS','k8s', 'beginner'],
-      )
-    ];
 
     return Scaffold(
       appBar: AppBar(
@@ -98,19 +68,24 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Text(widget.title),
         )
       ),
-      body: ListView.builder(
-        itemCount: talks.length,
-        itemBuilder: (context, it) {
-          return TalkCard(
-              location: talks[it].location,
-              presenter: talks[it].presenter,
-              tags: talks[it].tags,
-              talkAbstract: talks[it].talkAbstract,
-              talkTime: talks[it].talkTime,
-              title: talks[it].title,
+      body:
+        Consumer<TalkListModel>(
+          builder: (context, model, widget) {
+            return ListView.builder(
+              itemCount: model.items.length,
+              itemBuilder: (context, it) {
+                return TalkCard(
+                    location: model.items[it].location,
+                    presenter: model.items[it].presenter,
+                    tags: model.items[it].tags,
+                    talkAbstract: model.items[it].talkAbstract,
+                    talkTime: model.items[it].talkTime,
+                    title: model.items[it].title,
+                  );
+              }
             );
           }
-        ),
+        )
     );
   }
 }
