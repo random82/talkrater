@@ -1,0 +1,3 @@
+# Talk Rater
+
+Demonstration of Flutter that is neither a TODO list nor a counter...
