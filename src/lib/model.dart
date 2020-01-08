@@ -32,7 +32,9 @@ class Talk {
 
   @override
   bool operator ==(other) => this.talkId == other.talkId;
-  
+
+  @override
+  int get hashCode => this.talkId.hashCode;
 }
 
 class TalkListModel extends ChangeNotifier {
