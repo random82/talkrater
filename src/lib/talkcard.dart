@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:talkrater/talkratewidget.dart';
 
 class TalkCardDetailsSection extends StatelessWidget {
 
@@ -167,6 +168,8 @@ class TalkCardTitleSection extends StatelessWidget {
 
 class TalkCard extends StatelessWidget {
 
+  final String talkId;
+
   final String title;
 
   final String talkAbstract;
@@ -180,6 +183,7 @@ class TalkCard extends StatelessWidget {
   final List<String> tags;
 
   const TalkCard({Key key, 
+    @required this.talkId,
     @required this.title, 
     @required this.talkAbstract, 
     @required this.presenter, 
@@ -216,29 +220,10 @@ class TalkCard extends StatelessWidget {
           ),
           Padding(
             padding: EdgeInsets.fromLTRB(20,0,20,20),
-            child: TalkCardRateSection()
+            child: StarTalkRateWidget(talkId: talkId)
           )
         ]
       )
-    );
-  }
-}
-
-class TalkCardRateSection extends StatelessWidget {
-
-  const TalkCardRateSection({Key key}):super(key:key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: <Widget>[
-        Text("Rate:"),
-        Icon(Icons.star_border),
-        Icon(Icons.star_border),
-        Icon(Icons.star_border),
-        Icon(Icons.star_border),
-        Icon(Icons.star_border),
-      ],
     );
   }
 }

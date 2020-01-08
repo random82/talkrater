@@ -81,6 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
               itemCount: model.items.length,
               itemBuilder: (context, it) {
                 return TalkCard(
+                    talkId: model.items[it].talkId,
                     location: model.items[it].location,
                     presenter: model.items[it].presenter,
                     tags: model.items[it].tags,
