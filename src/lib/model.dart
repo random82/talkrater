@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class Talk {
+  final String talkId;
   final String title;
   final String talkAbstract;
   final String presenter;
@@ -12,6 +13,7 @@ class Talk {
   final List<String> tags;
 
   const Talk({
+    @required this.talkId,
     @required this.title, 
     @required this.talkAbstract, 
     @required this.presenter, 
@@ -20,12 +22,17 @@ class Talk {
     @required this.tags});
 
   Talk.fromJson(Map<String,dynamic> map):
+    talkId = map['talkId'],
     title = map['title'],
     location = map['location'],
     presenter = map['presenter'],
     talkAbstract = map['talkAbstract'],
     talkTime = DateTime.parse(map['talkTime']),
     tags = (map['tags'] as List).cast<String>();
+
+  @override
+  bool operator ==(other) => this.talkId == other.talkId;
+  
 }
 
 class TalkListModel extends ChangeNotifier {
@@ -35,8 +42,10 @@ class TalkListModel extends ChangeNotifier {
   UnmodifiableListView<Talk> get items => UnmodifiableListView(_items);
 
   add(Talk talk){
-    _items.add(talk);
-    notifyListeners();
+    if(!_items.contains(talk)){
+      _items.add(talk);
+      notifyListeners();
+    }
   }
 
   Future fetchTalkList() async{

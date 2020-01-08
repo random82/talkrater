@@ -12,6 +12,7 @@ void main() {
       expect(talkList.items.length, greaterThan(initialLength));
     });
     talkList.add(Talk(
+      talkId: 'A5437BCC-B386-4184-A65B-2963B701C41D',
       title: 'Amazing talk',
       talkAbstract: 
                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ullamcorper pharetra massa. '

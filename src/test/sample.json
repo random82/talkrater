@@ -4,6 +4,7 @@
     "endDate":"2020-02-21T16:30:00+10:00",
     "talks":[
         {
+            "talkId": "F8E48484-59A1-41AD-8BF9-77F0871F16FC",
             "title": "Amazing talk",
             "talkAbstract": 
                     "Amazing talk abstract",
@@ -13,6 +14,7 @@
             "tags": ["mobile","tech", "beginner"]
         },
         {
+            "talkId": "401EC6B2-FBFD-4882-B196-8FA1DB7DDDA8",
             "title": "Another amazing talk",
             "talkAbstract": 
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ullamcorper pharetra massa. ",
@@ -22,6 +24,7 @@
             "tags": ["cloud","expert"]
         },
         {
+            "talkId": "4864667C-7514-4951-9E32-DFF4B85BA433",
             "title": "Yet another amazing talk",
             "talkAbstract": 
                     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ullamcorper pharetra massa. ",
