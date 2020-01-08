@@ -46,6 +46,7 @@ class TalkListModel extends ChangeNotifier {
   add(Talk talk){
     if(!_items.contains(talk)){
       _items.add(talk);
+      _items.sort((t1,t2) => t1.talkTime.difference(t2.talkTime).inMilliseconds);
       notifyListeners();
     }
   }
