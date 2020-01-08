@@ -11,6 +11,7 @@ class Talk {
   final String location;
   final DateTime talkTime;
   final List<String> tags;
+  final int rating;
 
   const Talk({
     @required this.talkId,
@@ -19,7 +20,8 @@ class Talk {
     @required this.presenter, 
     @required this.talkTime, 
     @required this.location,
-    @required this.tags});
+    @required this.tags,
+    this.rating = 0});
 
   Talk.fromJson(Map<String,dynamic> map):
     talkId = map['talkId'],
@@ -28,7 +30,8 @@ class Talk {
     presenter = map['presenter'],
     talkAbstract = map['talkAbstract'],
     talkTime = DateTime.parse(map['talkTime']),
-    tags = (map['tags'] as List).cast<String>();
+    tags = (map['tags'] as List).cast<String>(),
+    rating = 0;
 
   @override
   bool operator ==(other) => this.talkId == other.talkId;
@@ -42,6 +45,26 @@ class TalkListModel extends ChangeNotifier {
   final List<Talk> _items = [];
 
   UnmodifiableListView<Talk> get items => UnmodifiableListView(_items);
+
+  rateTalk(String talkId, int rating){
+    var previous = _items.firstWhere((t) => t.talkId == talkId);
+    if(previous != null){
+      var newTalk = Talk(
+        talkId: previous.talkId,
+        title: previous.title,
+        talkAbstract: previous.talkAbstract,
+        talkTime: previous.talkTime,
+        location: previous.location,
+        presenter: previous.presenter,
+        tags: previous.tags.toList(),
+        rating: rating
+      ); 
+      var index = _items.indexOf(previous); 
+      _items.replaceRange(index, index + 1, [newTalk]);
+      print("You rated talk $talkId with $rating stars");
+      notifyListeners();
+    }
+  }
 
   add(Talk talk){
     if(!_items.contains(talk)){

@@ -182,6 +182,8 @@ class TalkCard extends StatelessWidget {
 
   final List<String> tags;
 
+  final int rating;
+
   const TalkCard({Key key, 
     @required this.talkId,
     @required this.title, 
@@ -189,7 +191,8 @@ class TalkCard extends StatelessWidget {
     @required this.presenter, 
     @required this.talkTime, 
     @required this.location,
-    @required this.tags
+    @required this.tags,
+    this.rating = 0
   }): super(key:key);
 
   @override
@@ -220,7 +223,7 @@ class TalkCard extends StatelessWidget {
           ),
           Padding(
             padding: EdgeInsets.fromLTRB(20,0,20,20),
-            child: StarTalkRateWidget(talkId: talkId)
+            child: StarTalkRateWidget(talkId: talkId, currentRating: rating)
           )
         ]
       )

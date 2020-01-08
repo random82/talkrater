@@ -88,6 +88,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     talkAbstract: model.items[it].talkAbstract,
                     talkTime: model.items[it].talkTime,
                     title: model.items[it].title,
+                    rating: model.items[it].rating
                   );
               }
             );
